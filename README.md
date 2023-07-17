@@ -30,4 +30,5 @@ To ingest, run `python ingest.py`
 
 Now we can chat with this data! In order to do that, run `python app.py`.
 This will spin up a Gradio application that you can chat with in the frontend.
-For details on how to customize the chatbot, see the code in `app.py`
+For details on how to customize the chatbot, see the code in `app.py`.
+The code in `app.py` should be well commented so you can understand what is going on.
