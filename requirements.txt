@@ -1,4 +1,4 @@
-gradio
+gradio>=3.37
 langchain==0.0.235
 openai
 chromadb
