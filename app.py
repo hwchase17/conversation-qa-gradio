@@ -77,10 +77,10 @@ def qa_response(message, history):
 	convo_string = "\n\n".join([f"Human: {h}\nAssistant: {a}" for h, a in history])
 
 	# Convert message history into LangChain format for the final response chain.
-	history_langchain_format = []
+	messages = []
 	for human, ai in history:
-		history_langchain_format.append(HumanMessage(content=human))
-		history_langchain_format.append(AIMessage(content=ai))
+		messages.append(HumanMessage(content=human))
+		messages.append(AIMessage(content=ai))
 
 	# Wrap all actual calls to chains in a trace group.
 	with trace_as_chain_group("qa_response") as group_manager:
@@ -98,7 +98,7 @@ def qa_response(message, history):
 		# Answer question.
 		return combine_docs_chain.run(
 			input_documents=docs, 
-			chat_history=history_langchain_format, 
+			chat_history=messages, 
 			question=message, 
 			callbacks=group_manager
 		)
